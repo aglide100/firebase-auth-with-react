@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import GoogleBtn from "../GoogleBtn/GoogleBtn";
+import GoogleBtn from "../../atom/GoogleBtn/GoogleBtn";
 
 const Login = ({ auth }: any) => {
   const router = useRouter();

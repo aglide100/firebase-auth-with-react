@@ -1,41 +1,45 @@
-import {firebaseAuth,  googleProvider} from './firebase'; 
-import {
-    signInWithPopup
-  } from "firebase/auth";
+import { firebaseAuth, googleProvider } from "./firebase";
+import { signInWithPopup } from "firebase/auth";
 
 class Auth {
-    async login(name:any) {
+    async login(name: any) {
         try {
             const provider = this.getProvider(name);
             // return await signInWithRedirect(firebaseAuth, provider)
-            return await signInWithPopup(firebaseAuth ,provider).then()
-            
+            return await signInWithPopup(firebaseAuth, provider).then();
         } catch (error) {
-            console.error(error)
-            alert(error)
-            return null
+            console.error(error);
+            alert(error);
+            return null;
         }
     }
     async logout() {
         try {
-            await firebaseAuth.signOut()
-
+            await firebaseAuth.signOut();
         } catch (error) {
-            alert("error! ," + error)
+            alert("error! ," + error);
         }
     }
-    getProvider(name:any){
-        switch(name){
-          case 'Google':
-            return googleProvider;
-          default:
-            throw new Error(`${name} is unknown provider.`);
+    getProvider(name: any) {
+        switch (name) {
+            case "Google":
+                return googleProvider;
+            default:
+                throw new Error(`${name} is unknown provider.`);
         }
     }
-    onAuthChange = (callback:any) => {
-        firebaseAuth.onAuthStateChanged(user => {
-            callback(user)
-        }) 
-    }
-};
+    onAuthChange = (callback: any) => {
+        // firebaseAuth.onAuthStateChanged(user => {
+        //     callback(user)
+        // })
+        firebaseAuth.onAuthStateChanged(async (user) => {
+            if (user) {
+                const tokenResult = await user.getIdTokenResult(true);
+                callback(user, tokenResult.token);
+            } else {
+                callback(null, null);
+            }
+        });
+    };
+}
 export default Auth;

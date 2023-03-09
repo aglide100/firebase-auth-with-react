@@ -1,15 +1,15 @@
 import Auth from "@/service/firebase/auth";
-import dynamic from "next/dynamic"
+import dynamic from "next/dynamic";
 
 const Login = dynamic(
   () =>
-      import("../../component/atom/Login/Login").catch((err) => {
-          return () => <>Can't load job list... {err}</>;
-      }),
+    import("../../component/layout/Login/Login").catch((err) => {
+      return () => <>Can't load job list... {err}</>;
+    }),
   {
-      loading: () => <></>,
-      ssr: false,
-  },
+    loading: () => <></>,
+    ssr: false,
+  }
 );
 
 // const Logout = dynamic(
@@ -31,5 +31,5 @@ export default function Home() {
       {/* <Logout onLogOut={auth.logout}></Logout> */}
       <Login auth={auth}></Login>
     </div>
-  )
+  );
 }
