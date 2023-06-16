@@ -10,5 +10,5 @@ export default function refresh({ auth }: any) {
             }
         });
     }, []);
-    return <>{result}</>;
+    return <span>{result}</span>;
 }

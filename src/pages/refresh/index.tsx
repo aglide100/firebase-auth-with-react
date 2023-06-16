@@ -16,9 +16,8 @@ export default function Home() {
     const auth = new Auth();
 
     return (
-        <div>
-            {/* <Logout onLogOut={auth.logout}></Logout> */}
+        <>
             <Refresh auth={auth}></Refresh>
-        </div>
+        </>
     );
 }

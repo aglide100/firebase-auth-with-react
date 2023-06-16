@@ -1,6 +1,8 @@
 import { firebaseAuth, googleProvider } from "./firebase";
 import { signInWithPopup } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
+const clone = require("rfdc")();
 class Auth {
     async login(name: any) {
         try {
@@ -34,6 +36,9 @@ class Auth {
         // })
         firebaseAuth.onAuthStateChanged(async (user) => {
             if (user) {
+                console.log(user);
+                // const serializedObj = JSON.stringify(clone(user));
+                // console.log(serializedObj);
                 const tokenResult = await user.getIdTokenResult(true);
                 callback(user, tokenResult.token);
             } else {

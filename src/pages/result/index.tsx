@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react"
-export default function credential(props: any) {
-  const [result, setResult] = useState<string>();
+import { useEffect, useState } from "react";
 
-  useEffect(() => {
-    const res = localStorage.getItem('UserCredential')
-    if (res != undefined) {
-      setResult(res);
-    }
-  }, [])
-  return (<>{result}</>)
+export default function credential(props: any) {
+    const [result, setResult] = useState<string>();
+
+    useEffect(() => {
+        const res = localStorage.getItem("UserCredential");
+        if (res != undefined) {
+            setResult(res);
+        }
+    }, []);
+    return <>{result}</>;
 }
