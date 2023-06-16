@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { signInWithCustomToken } from "firebase/auth";
-import { getAuth } from "firebase/auth";
+import { firebaseAuth } from "@/service/firebase/firebase";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     async function refreshToken(customToken: string) {
         try {
-            const user = await signInWithCustomToken(getAuth(), customToken);
+            const user = await signInWithCustomToken(firebaseAuth, customToken);
             res.status(200).json({
                 user,
             });
