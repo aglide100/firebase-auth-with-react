@@ -20,4 +20,10 @@ Refresh accessToken
 
 Refresh accessToken with customToken
 
-> /api/refresh&customToken=[someCustomToken]
+[Post]
+
+```
+x-www-form-urlencoded customToken=[yourCustomToken]
+```
+
+> /api/refresh
