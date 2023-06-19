@@ -1,8 +1,6 @@
 import { firebaseAuth, googleProvider } from "./firebase";
 import { signInWithPopup } from "firebase/auth";
-import { getAuth } from "firebase/auth";
 
-const clone = require("rfdc")();
 class Auth {
     async login(name: any) {
         try {

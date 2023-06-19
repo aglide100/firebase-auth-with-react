@@ -15,7 +15,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         }
     }
     const token = req.body.customToken as string;
-    // const token = req.query.customToken as string;
 
     refreshToken(token);
 }

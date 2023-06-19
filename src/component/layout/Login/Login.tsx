@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
 import React from "react";
 import GoogleBtn from "../../atom/GoogleBtn/GoogleBtn";
-import firebase from "firebase/app";
+
 const Login = ({ auth }: any) => {
     const router = useRouter();
 
     const onLogin = (e: any) => {
         auth.login(e.target.textContent).then((res: any) => {
-            // console.log(res)
             localStorage.setItem("UserCredential", JSON.stringify(res));
 
             router.push({
